@@ -93,7 +93,6 @@ portfolio1/
 - `npm run dev` - Start development server
 - `npm run build` - Build for production
 - `npm run preview` - Preview production build
-- `npm run lint` - Run ESLint for code quality
 
 ## 🎨 Customization Guide
 
@@ -148,7 +147,6 @@ To add new routes, edit `src/routes/AppRoutes.jsx`.
 - **React** - UI library
 - **Vite** - Build tool and dev server
 - **React Router DOM** - Client-side routing
-- **ESLint** - Code linting
 
 ## 📦 Dependencies
 
@@ -160,10 +158,13 @@ To add new routes, edit `src/routes/AppRoutes.jsx`.
 ### Development Dependencies
 - `vite` - ^5.3.4
 - `@vitejs/plugin-react` - ^4.3.1
-- `eslint` - ^8.57.0
-- `eslint-plugin-react` - ^7.34.3
-- `eslint-plugin-react-hooks` - ^4.6.2
-- `eslint-plugin-react-refresh` - ^0.4.7
+
+## 🧹 Optimizations
+
+This project is optimized for minimal dependencies:
+- **No ESLint** - Removed for faster `npm install` and smaller `node_modules`
+- **Lean setup** - Only 44MB node_modules with essential dependencies
+- **Production-ready** - All necessary tools for development and deployment
 
 ## 📄 License
 
