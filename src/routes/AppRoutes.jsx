@@ -1,5 +1,6 @@
 import { Routes, Route } from 'react-router-dom';
 import Home from '../pages/Home/Home';
+import Introduction from '../pages/Introduction/Introduction';
 import Skills from '../pages/Skills/Skills';
 import WebAdventures from '../pages/WebAdventures/WebAdventures';
 import DesignGallery from '../pages/DesignGallery/DesignGallery';
@@ -9,6 +10,7 @@ function AppRoutes() {
   return (
     <Routes>
       <Route path="/" element={<Home />} />
+      <Route path="/introduction" element={<Introduction />} />
       <Route path="/skills" element={<Skills />} />
       <Route path="/web-adventures" element={<WebAdventures />} />
       <Route path="/design-gallery" element={<DesignGallery />} />
