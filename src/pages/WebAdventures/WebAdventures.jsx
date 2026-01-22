@@ -1,59 +1,77 @@
-import './WebAdventures.css';
+import "./WebAdventures.css";
+import React from "react";
+import Bg from "../../assets/images/webDevBg.svg";
+import GameDes from "../../assets/images/GameDescription.svg";
+import note from "../../assets/images/Sticky.svg";
+import github from "../../assets/icons/github.svg";
 
 function WebAdventures() {
   return (
-    <div className="web-adventures">
-      <div className="container">
-        <div className="web-adventures-header">
-          <h1 className="web-adventures-title">Web Adventures</h1>
-          <p className="web-adventures-description">
-            Explore my web development projects. Replace these placeholders with 
-            your actual projects and accomplishments.
-          </p>
+    <section className="web-adventures-section">
+      {/* Background placeholder */}
+      <img
+        src={Bg}
+        alt="Web Adventures Background"
+        className="web-bg"
+      />
+
+      {/* ===== PAGE 1 ===== */}
+      <div className="adventure-page">
+        {/* Left: Image stack */}
+        <div className="image-stack">
+          <div className="image back left"></div>
+          <div className="image front"></div>
+          <div className="image back right"></div>
         </div>
-        
-        <div className="projects-grid">
-          <div className="project-card">
-            <div className="project-card-image">
-              Project Image
-            </div>
-            <div className="project-card-content">
-              <h3 className="project-card-title">Project One</h3>
-              <p className="project-card-description">
-                Description of your first web project. Add details about the 
-                technologies used and what you built.
-              </p>
-            </div>
-          </div>
-          
-          <div className="project-card">
-            <div className="project-card-image">
-              Project Image
-            </div>
-            <div className="project-card-content">
-              <h3 className="project-card-title">Project Two</h3>
-              <p className="project-card-description">
-                Description of your second web project. Highlight the key features 
-                and your role in the project.
-              </p>
-            </div>
-          </div>
-          
-          <div className="project-card">
-            <div className="project-card-image">
-              Project Image
-            </div>
-            <div className="project-card-content">
-              <h3 className="project-card-title">Project Three</h3>
-              <p className="project-card-description">
-                Description of your third web project. Share what challenges you 
-                overcame and what you learned.
-              </p>
-            </div>
+
+        {/* Right: Description placeholder */}
+        <div className="description-wrapper">
+          <img
+            src={GameDes}
+            alt="Project Description"
+            className="description-placeholder"
+          />
+
+          {/* Sticky links */}
+          <div className="sticky-links">
+            <a href="#" aria-label="GitHub">
+              <img src={github} alt="GitHub" />
+            </a>
+            <a href="#" aria-label="Live Link">
+              <img src="/placeholders/link-icon.png" alt="Live Link" />
+            </a>
           </div>
         </div>
       </div>
-    </div>
+
+      {/* ===== PAGE 2 ===== */}
+      <div className="adventure-page reverse">
+        {/* Left: Description placeholder */}
+        <div className="description-wrapper">
+          <img
+            src="/placeholders/project-description-2.png"
+            alt="Project Description"
+            className="description-placeholder"
+          />
+
+          <div className="sticky-links">
+            <a href="#" aria-label="GitHub">
+              <img src="/placeholders/github-icon.png" alt="GitHub" />
+            </a>
+            <a href="#" aria-label="Live Link">
+              <img src="/placeholders/link-icon.png" alt="Live Link" />
+            </a>
+          </div>
+        </div>
+
+        {/* Right: Image stack */}
+        <div className="image-stack">
+          <div className="image back left"></div>
+          <div className="image front"></div>
+          <div className="image back right"></div>
+        </div>
+      </div>
+    </section>
   );
 }
 

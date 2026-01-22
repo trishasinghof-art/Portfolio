@@ -1,79 +1,101 @@
-.web-adventures {
-  flex: 1;
-  padding: 4rem 0;
+.web-adventures-section {
+  position: relative;
+  padding: 6rem 2rem;
 }
 
-.web-adventures-header {
-  text-align: center;
-  margin-bottom: 3rem;
-}
-
-.web-adventures-title {
-  font-size: 2.5rem;
-  color: #333;
-  margin-bottom: 1rem;
-}
-
-.web-adventures-description {
-  font-size: 1.1rem;
-  color: #666;
-  max-width: 700px;
-  margin: 0 auto;
-}
-
-.projects-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-  gap: 2rem;
-  margin-top: 3rem;
-}
-
-.project-card {
-  background: white;
-  border-radius: 8px;
-  overflow: hidden;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.project-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
-}
-
-.project-card-image {
+/* Background */
+.web-bg {
+  position: absolute;
+  inset: 0;
   width: 100%;
-  height: 200px;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  height: 100%;
+  object-fit: cover;
+  z-index: -1;
+}
+
+/* One full page */
+.adventure-page {
+  max-width: 1200px;
+  margin: 0 auto 6rem auto;
   display: flex;
   align-items: center;
-  justify-content: center;
-  color: white;
-  font-size: 1.2rem;
+  justify-content: space-between;
+  gap: 4rem;
 }
 
-.project-card-content {
-  padding: 1.5rem;
+/* Reverse layout for page 2 */
+.adventure-page.reverse {
+  flex-direction: row-reverse;
 }
 
-.project-card-title {
-  font-size: 1.5rem;
-  color: #333;
-  margin-bottom: 0.5rem;
+/* ================= IMAGE STACK ================= */
+
+.image-stack {
+  position: relative;
+  width: 360px;
+  height: 300px;
 }
 
-.project-card-description {
-  font-size: 1rem;
-  color: #666;
-  line-height: 1.6;
+/* Common image styles */
+.image {
+  position: absolute;
+  border-radius: 12px;
 }
 
-@media (max-width: 768px) {
-  .web-adventures-title {
-    font-size: 2rem;
-  }
-  
-  .projects-grid {
-    grid-template-columns: 1fr;
-  }
+/* Front (main image) */
+.image.front {
+  width: 260px;
+  height: 300px;
+  background: #ffffff;
+  z-index: 3;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* Back images (hidden partially) */
+.image.back {
+  width: 260px;
+  height: 300px;
+  background: #dcdcdc;
+  z-index: 1;
+}
+
+.image.back.left {
+  left: 0;
+  top: 20px;
+}
+
+.image.back.right {
+  right: 0;
+  top: 20px;
+}
+
+/* ================= DESCRIPTION ================= */
+
+.description-wrapper {
+  position: relative;
+  width: 420px;
+}
+
+.description-placeholder {
+  width: 100%;
+  display: block;
+  border-radius: 16px;
+}
+
+/* Sticky links */
+.sticky-links {
+  position: absolute;
+  bottom: -20px;
+  right: -20px;
+  background: #ffffff;
+  padding: 0.8rem 1rem;
+  border-radius: 10px;
+  display: flex;
+  gap: 1rem;
+}
+
+.sticky-links img {
+  width: 24px;
+  height: 24px;
 }
