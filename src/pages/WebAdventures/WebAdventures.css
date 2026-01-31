@@ -23,64 +23,91 @@
   gap: 4rem;
 }
 
-/* Reverse layout for page 2 */
-.adventure-page.reverse {
-  flex-direction: row-reverse;
+/* Page 1 */
+.adventure-page:first-of-type {
+  margin-bottom: 2rem;
+  align-items: center;
+}
+
+.adventure-page:first-of-type .description-wrapper {
+  width: 420px;
+}
+
+.adventure-page:first-of-type .description-placeholder {
+  max-width: 100%;
+  height: auto;
+  max-height: calc(100vh - 160px);
+  object-fit: contain;
 }
 
 /* ================= IMAGE STACK ================= */
 
 .image-stack {
   position: relative;
-  width: 360px;
-  height: 300px;
+  width: 620px;
+  height: 420px; /* critical: allows pyramid spacing */
 }
 
-/* Common image styles */
+/* Base image */
 .image {
   position: absolute;
   border-radius: 12px;
+  overflow: visible;
 }
 
-/* Front (main image) */
+.image img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  display: block;
+}
+
+/* Front image */
 .image.front {
-  width: 260px;
-  height: 300px;
-  background: #ffffff;
-  z-index: 3;
+  width: 560px;
+  z-index: 4;
+
   left: 50%;
+  top: -40px; /* UPWARD SHIFT FIX */
   transform: translateX(-50%);
+  box-shadow: 0 14px 34px rgba(0,0,0,0.18);
 }
 
-/* Back images (hidden partially) */
+/* Back images */
 .image.back {
-  width: 260px;
-  height: 300px;
-  background: #dcdcdc;
+  width: 520px;
   z-index: 1;
 }
 
 .image.back.left {
   left: 0;
-  top: 20px;
+  top: 80px;
+  transform: rotate(-8deg);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.12);
 }
 
 .image.back.right {
   right: 0;
-  top: 20px;
+  top: 80px;
+  transform: rotate(8deg);
+  z-index: 2;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.12);
 }
 
 /* ================= DESCRIPTION ================= */
 
 .description-wrapper {
   position: relative;
-  width: 420px;
+  width: 540px;
+  max-width: 48%;
 }
 
 .description-placeholder {
   width: 100%;
+  height: auto;
   display: block;
   border-radius: 16px;
+  object-fit: contain;
 }
 
 /* Sticky links */
@@ -98,4 +125,82 @@
 .sticky-links img {
   width: 24px;
   height: 24px;
+}
+
+/* Slight upward lift for visibility */
+@media (min-width: 700px) {
+  .web-adventures-section .description-wrapper {
+    transform: translateY(-6vh);
+  }
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media (max-width: 900px) {
+  .adventure-page {
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .image-stack {
+    width: 100%;
+    max-width: 420px;
+    height: auto;
+  }
+
+  .image {
+    position: relative;
+    left: auto;
+    right: auto;
+    top: auto;
+    transform: none;
+    width: 100%;
+    box-shadow: none;
+  }
+
+  .description-wrapper {
+    width: 100%;
+    max-width: none;
+    transform: none;
+  }
+}
+/* =========================================================
+   PAGE 2 — DESCRIPTION WRAPPER REGRESSION FIX
+   Scope: ONLY Page 2, no shared/global impact
+   ========================================================= */
+
+.adventure-page:nth-of-type(2) .description-wrapper {
+  /* Restore original balanced size */
+  width: 420px;
+  max-width: 420px;
+
+  /* Neutralize inherited scaling / shifting */
+  transform: none;
+
+  /* Restore original proportions */
+  padding: 0;
+  margin: 0;
+
+  /* Ensure flex sizing does not inflate it */
+  flex: 0 0 auto;
+}
+
+/* Ensure the description image itself remains correctly sized */
+.adventure-page:nth-of-type(2) .description-placeholder {
+  width: 100%;
+  height: auto;
+  max-height: calc(100vh - 160px);
+  object-fit: contain;
+}
+
+/* Prevent Page 2 from inheriting Page 1 vertical lift */
+@media (min-width: 700px) {
+  .adventure-page:nth-of-type(2) .description-wrapper {
+    transform: none;
+  }
+}
+
+/* Page 2: slight downward nudge for front image only (no size changes) */
+.adventure-page:nth-of-type(2) .image.front {
+  transform: translateX(-50%) translateY(12px);
 }
