@@ -24,12 +24,72 @@
   width: 420px;
   flex-shrink: 0;
   margin-top: -2rem;
+  /* Entry animation: start off-screen above, drop in and perform three bounces.
+     - Uses transform-only keyframes for performant animation without layout shifts.
+     - Starts invisible (opacity:0) and becomes visible as it drops.
+     - Animation runs once on initial load and leaves the element at translateY(0).
+  */
+  will-change: transform, opacity;
+  animation: intro-drop-bounce 1600ms cubic-bezier(.22,.9,.3,1) both;
+  animation-iteration-count: 1;
 }
 
 .id-card-image {
   width: 100%;
   display: block;
   transform: rotate(-6deg); /* slight tilt as per design */
+}
+
+/* Keyframes: drop from above (-150%), overshoot a little, then settle to 0.
+   The values use percentage translation relative to the element's own height.
+   Adjust timings or amplitudes if you want a stronger/softer bounce. */
+@keyframes intro-drop-bounce {
+  /* 0%: off-screen above and invisible */
+  0% {
+    opacity: 0;
+    transform: translateY(-120vh);
+  }
+
+  /* Enter: become visible while approaching a clear overshoot (down past resting) */
+  40% {
+    opacity: 1;
+    transform: translateY(20px); /* land slightly past resting position */
+  }
+
+  /* First (largest) rebound: strong upward travel */
+  54% {
+    transform: translateY(-100px); /* strong rebound up */
+  }
+
+  /* Second (medium) rebound: reduced amplitude */
+  66% {
+    transform: translateY(44px); /* down again, smaller than initial overshoot */
+  }
+
+  /* Third (medium-small) rebound: smaller upward travel */
+  76% {
+    transform: translateY(-28px);
+  }
+
+  /* Fourth (small) rebound: reduced again */
+  85% {
+    transform: translateY(14px);
+  }
+
+  /* Fifth (very small) rebound: tiny upward travel */
+  92% {
+    transform: translateY(-6px);
+  }
+
+  /* Final small settle before rest */
+  97% {
+    transform: translateY(2px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0); /* exact final resting position, no jitter */
+  }
 }
 
 /* RIGHT: Text */

@@ -1,95 +1,146 @@
-.about {
-  flex: 1;
-  padding: 4rem 0;
+/* =============================
+   About Me Section
+============================= */
+
+.about-me-section {
+  /* Make the section full-bleed across the viewport so images can touch window edges */
+  width: 100vw; /* ensures edge-to-edge width */
+  /* Center the full-bleed section inside any centered parent/container
+     without changing layout of other pages. This avoids horizontal scroll. */
+  margin-left: calc(50% - 50vw);
+  min-height: 100vh;
+  background: #E5D0E3; /* page background color requested */
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
 }
 
-.about-header {
-  text-align: center;
-  margin-bottom: 3rem;
+/* =============================
+   File Stack Container
+============================= */
+
+.files-container {
+  /* Use full width so each file-item can span the viewport
+     while preserving vertical stacking */
+  width: 100%;
+  max-width: none; /* remove constrained width so images can be full-bleed */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 4rem;
+  gap: 3.5rem; /* equal vertical spacing */
 }
 
-.about-title {
-  font-size: 2.5rem;
-  color: #333;
-  margin-bottom: 1rem;
-}
-
-.about-content {
-  max-width: 800px;
-  margin: 0 auto;
-}
-
-.about-section {
-  background: #f8f9fa;
-  padding: 2rem;
-  border-radius: 8px;
-  margin-bottom: 2rem;
-}
-
-.about-section-title {
-  font-size: 1.8rem;
-  color: #333;
-  margin-bottom: 1rem;
-}
-
-.about-text {
-  font-size: 1.1rem;
-  color: #666;
-  line-height: 1.8;
-  margin-bottom: 1rem;
-}
-
-.about-list {
-  list-style: none;
-  padding: 0;
-}
-
-.about-list-item {
-  font-size: 1.1rem;
-  color: #666;
-  padding: 0.5rem 0;
-  padding-left: 1.5rem;
+/* Make the files-container a positioned block that matches the viewport
+   height so absolute-positioned file items can align to the bottom of the
+   viewport using bottom: 0. This keeps all files bottom-aligned as requested. */
+.files-container {
   position: relative;
+  height: 100vh; /* reference height for bottom alignment */
+  overflow-x: hidden; /* prevent horizontal scroll when using full-bleed widths */
 }
 
-.about-list-item:before {
-  content: "→";
+/* =============================
+   File Item
+============================= */
+
+.file-item {
+  position: relative;
+  width: 85%;
+  max-width: 900px;
+  cursor: pointer;
+  transition: transform 0.6s ease;
+}
+
+.file-item img {
+  width: 100%;
+  display: block;
+}
+
+/* Slide-down behavior */
+.file-item.shift-down {
+  transform: translateY(75vh);
+}
+
+/* =============================
+   Text Overlay
+============================= */
+
+.file-item {
+  position: relative;
+  /* Make each card span the full viewport width so images touch edges */
+  width: 100vw;
+  max-width: none;
+  cursor: pointer;
+  transition: transform 0.6s ease;
+}
+
+.file-item img {
+  /* Ensure images fill the placeholder completely, scale proportionally,
+     and avoid layout shifts or distortion. object-fit:cover fills the box
+     while preserving aspect ratio. */
+  width: 100vw; /* full viewport width */
+  height: auto; /* preserve aspect ratio */
+  object-fit: cover; /* fill the placeholder without stretching */
+  display: block;
+}
+
+/* ----------------------
+   Bottom-aligned stacked layout
+   - Parent (.files-container) is position:relative and height:100vh.
+   - Each .file-item is positioned absolutely and anchored to bottom:0,
+     then centered horizontally using left:50% + translateX(-50%).
+   - Widths remain full-bleed (100vw) and images scale proportionally.
+   - z-index increases with child index so later items render above earlier ones.
+   - This preserves bottom alignment for different heights while showing
+     the tops of underlying files.
+   ---------------------- */
+.files-container .file-item {
   position: absolute;
-  left: 0;
-  color: #667eea;
+  left: 50%;
+  bottom: 0; /* bottom-align every file to viewport bottom */
+  transform: translateX(-50%);
+  width: 100vw;
+  max-width: none;
 }
 
-.about-contact {
+/* Stack order: 1 = bottom (Red), 2 = Lavender, 3 = Blue, 4 = Brown, 5 = Purple (top) */
+.files-container .file-item:nth-child(1) { z-index: 1; }
+.files-container .file-item:nth-child(2) { z-index: 2; }
+.files-container .file-item:nth-child(3) { z-index: 3; }
+.files-container .file-item:nth-child(4) { z-index: 4; }
+.files-container .file-item:nth-child(5) { z-index: 5; }
+
+/* Responsive tweak: ensure smaller screens keep bottom alignment and scale images */
+@media (max-width: 700px) {
+  .files-container { height: 100vh; }
+  .files-container .file-item { width: 100vw; }
+  .file-item img { width: 100vw; object-fit: cover; }
+}
+
+/* Small visual tweak: move the topmost (purple) file 50px downward
+   We use translateX(-50%) to preserve horizontal centering and add
+   translateY(50px) to nudge it down. This is transform-only and does
+   not change sizing or layout. */
+.files-container .file-item:nth-child(5) {
+  transform: translateX(-50%) translateY(80px);
+}
+/* Center text for lavender file */
+.center-text {
+  left: 50%;
+  transform: translate(-50%, -50%);
   text-align: center;
-  margin-top: 3rem;
-  padding: 2rem;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  color: white;
-  border-radius: 8px;
 }
 
-.about-contact-title {
-  font-size: 1.8rem;
-  margin-bottom: 1rem;
-}
-
-.about-contact-text {
-  font-size: 1.1rem;
-  margin-bottom: 1.5rem;
-}
-
-.about-contact-email {
-  color: white;
-  text-decoration: underline;
+.no-more {
+  display: block;
   font-size: 1.2rem;
+  opacity: 0.85;
 }
 
-@media (max-width: 768px) {
-  .about-title {
-    font-size: 2rem;
-  }
-  
-  .about-section {
-    padding: 1.5rem;
-  }
+.about-me {
+  display: block;
+  font-size: 2.8rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
 }

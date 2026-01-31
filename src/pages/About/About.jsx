@@ -1,68 +1,91 @@
-import './About.css';
+import React, { useState, useRef } from "react";
+import "./About.css";
+
+import red from "../../assets/AboutMeFiles/red.svg";
+import purple from "../../assets/AboutMeFiles/purple.svg";
+import blue from "../../assets/AboutMeFiles/blue.svg";
+import brown from "../../assets/AboutMeFiles/brown.svg";
+import lavender from "../../assets/AboutMeFiles/lavender.svg";
+
+const FILES = [
+  { id: 0, label: "Education", img: red },
+  { id: 1, label: "Soft Skills", img: lavender },
+  { id: 2, label: "Projects", img: blue },
+  { id: 3, label: "Let's Connect", img: brown },
+  { id: 4, label: "About Me", img: purple, center: true },
+];
 
 function About() {
+  const [activeIndex, setActiveIndex] = useState(null);
+  const [offsets, setOffsets] = useState(() => new Array(FILES.length).fill(0));
+  const itemRefs = useRef([]);
+
+  const handleClick = (index) => {
+    // Toggle behavior: clicking same index resets offsets
+    if (activeIndex === index) {
+      setOffsets(new Array(FILES.length).fill(0));
+      setActiveIndex(null);
+      return;
+    }
+
+    // Collect overlapping indices (those above the clicked file)
+    const overlapping = [];
+    for (let i = index + 1; i < FILES.length; i++) overlapping.push(i);
+
+    // If nothing overlaps, reset offsets and set active
+    if (overlapping.length === 0) {
+      setOffsets(new Array(FILES.length).fill(0));
+      setActiveIndex(index);
+      return;
+    }
+
+    const clickedEl = itemRefs.current[index];
+    const topmostEl = itemRefs.current[overlapping[overlapping.length - 1]];
+    if (!clickedEl || !topmostEl) return;
+
+    const clickedRect = clickedEl.getBoundingClientRect();
+    const topmostRect = topmostEl.getBoundingClientRect();
+
+    // Compute shift so bottom of clicked aligns with top of topmost overlapping
+    const shift = clickedRect.bottom - topmostRect.top;
+
+    const REDUCTION = 75; // pixels to reduce for the topmost overlapping file
+
+    const newOffsets = new Array(FILES.length).fill(0);
+    const topmostIndex = overlapping[overlapping.length - 1];
+    for (let i = index + 1; i < FILES.length; i++) {
+      if (i === topmostIndex) {
+        // reduce the topmost file's downward displacement to avoid excess white space
+        newOffsets[i] = Math.max(0, shift - REDUCTION);
+      } else {
+        newOffsets[i] = shift;
+      }
+    }
+
+    setOffsets(newOffsets);
+    setActiveIndex(index);
+  };
+
   return (
-    <div className="about">
-      <div className="container">
-        <div className="about-header">
-          <h1 className="about-title">About Me</h1>
-        </div>
-        
-        <div className="about-content">
-          <div className="about-section">
-            <h2 className="about-section-title">Who I Am</h2>
-            <p className="about-text">
-              Replace this with your personal introduction. Tell your story, share 
-              your background, and explain what drives you in your work.
-            </p>
-            <p className="about-text">
-              Add more paragraphs to give visitors a comprehensive understanding of 
-              who you are as a professional and as a person.
-            </p>
-          </div>
-          
-          <div className="about-section">
-            <h2 className="about-section-title">What I Do</h2>
-            <ul className="about-list">
-              <li className="about-list-item">
-                Web Development - Building responsive and modern websites
-              </li>
-              <li className="about-list-item">
-                UI/UX Design - Creating intuitive and beautiful user interfaces
-              </li>
-              <li className="about-list-item">
-                Problem Solving - Finding creative solutions to complex challenges
-              </li>
-              <li className="about-list-item">
-                Continuous Learning - Always exploring new technologies and methods
-              </li>
-            </ul>
-          </div>
-          
-          <div className="about-section">
-            <h2 className="about-section-title">My Journey</h2>
-            <p className="about-text">
-              Share your professional journey here. Talk about how you got started, 
-              key milestones, and where you're headed.
-            </p>
-            <p className="about-text">
-              Include any significant achievements, certifications, or experiences 
-              that have shaped your career path.
-            </p>
-          </div>
-          
-          <div className="about-contact">
-            <h2 className="about-contact-title">Let's Connect</h2>
-            <p className="about-contact-text">
-              Interested in working together or just want to say hi?
-            </p>
-            <a href="mailto:your.email@example.com" className="about-contact-email">
-              your.email@example.com
-            </a>
-          </div>
-        </div>
+    <section className="about-me-section">
+      <div className="files-container">
+        {FILES.map((file, index) => {
+          return (
+            <div
+              key={file.id}
+              className={`file-item`}
+              onClick={() => handleClick(index)}
+              ref={(el) => (itemRefs.current[index] = el)}
+              style={{
+                transform: `translateX(-50%) translateY(${offsets[index] || 0}px)`,
+              }}
+            >
+              <img src={file.img} alt={file.label} />
+            </div>
+          );
+        })}
       </div>
-    </div>
+    </section>
   );
 }
 

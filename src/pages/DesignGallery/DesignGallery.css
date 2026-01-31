@@ -1,80 +1,96 @@
-.design-gallery {
-  flex: 1;
-  padding: 4rem 0;
-}
+/* =============================
+   Design Gallery Styles
+============================= */
 
-.design-gallery-header {
-  text-align: center;
-  margin-bottom: 3rem;
-}
-
-.design-gallery-title {
-  font-size: 2.5rem;
-  color: #333;
-  margin-bottom: 1rem;
-}
-
-.design-gallery-description {
-  font-size: 1.1rem;
-  color: #666;
-  max-width: 700px;
-  margin: 0 auto;
-}
-
-.gallery-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 2rem;
-  margin-top: 3rem;
-}
-
-.gallery-item {
-  background: white;
-  border-radius: 8px;
-  overflow: hidden;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  cursor: pointer;
-}
-
-.gallery-item:hover {
-  transform: scale(1.05);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
-}
-
-.gallery-item-image {
+.design-gallery-section {
+  position: relative;
   width: 100%;
-  height: 250px;
-  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  height: 100vh;
+  overflow: hidden;
+
   display: flex;
+  flex-direction: column;
   align-items: center;
+}
+
+/* Background image — RESTORED */
+.design-gallery-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center; /* CRITICAL FIX */
+  z-index: -1;
+}
+
+/* Heading — FONT + POSITION RESTORED */
+.design-gallery-heading {
+  margin-top: 0.5rem; /* accounts for navbar height */
+  margin-bottom: 3.5rem;
+
+  text-align: center;
+  font-family: "Kapakana", cursive; /* unchanged */
+  font-size: 6rem;
+  font-weight: normal;
+  color: #6b2a8a;
+
+  letter-spacing: 0.04em;
+  text-shadow:
+    0 2px 6px rgba(0, 0, 0, 0.15),
+    0 0 12px rgba(173, 126, 209, 0.35);
+}
+
+/* =============================
+   Pillars Layout (FIXED)
+============================= */
+
+.design-gallery-pillars {
+  display: flex;
   justify-content: center;
-  color: white;
-  font-size: 1.2rem;
+  align-items: flex-end;
+  gap: 3rem;
+
+  width: 100%;
+  max-width: 1200px;
+  padding: 0 2rem;
+
+  margin-top: auto;
+  margin-bottom: calc(5rem + 300px); /* shifts pillars UP by ~30px */
 }
 
-.gallery-item-content {
-  padding: 1.5rem;
+
+/* Pillar base — proportions preserved */
+.pillar {
+  width: 110px;
+  height: 420px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.35);
+  overflow: hidden; /* ensure image fills without showing gaps */
 }
 
-.gallery-item-title {
-  font-size: 1.3rem;
-  color: #333;
-  margin-bottom: 0.5rem;
+/* Ensure images completely fill the pillar placeholders */
+.pillar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
 }
 
-.gallery-item-description {
-  font-size: 0.95rem;
-  color: #666;
-  line-height: 1.5;
+/* Gradient glows — unchanged visually */
+.pillar-orange {
+  box-shadow: 0 0 55px rgba(255, 159, 57, 8);
+}
+.pillar-pink {
+  box-shadow: 0 0 55px rgba(255, 68, 161, 8);
+}
+.pillar-purple {
+  box-shadow: 0 0 55px rgba(140, 61, 200, 85);
+}
+.pillar-green {
+  box-shadow: 0 0 55px rgba(56, 244, 159, 8);
+}
+.pillar-red {
+  box-shadow: 0 0 55px rgba(245, 63, 63, 8);
 }
 
-@media (max-width: 768px) {
-  .design-gallery-title {
-    font-size: 2rem;
-  }
-  
-  .gallery-grid {
-    grid-template-columns: 1fr;
-  }
-}

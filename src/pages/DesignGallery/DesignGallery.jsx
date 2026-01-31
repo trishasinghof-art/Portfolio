@@ -1,72 +1,47 @@
-import './DesignGallery.css';
+import React from "react";
+import "./DesignGallery.css";
+import Bg from "../../assets/gallery/designGalleryBG.svg";
+import foodDelivery from "../../assets/gallery/food delivery.svg";
+import carouselPost from "../../assets/gallery/carousalpost.svg";
+import portal from "../../assets/gallery/portal.svg";
+import agrisense from "../../assets/gallery/Agrisense.svg";
+import anime from "../../assets/gallery/anime.svg";
+import "@fontsource/kapakana"; // default weights
 
 function DesignGallery() {
   return (
-    <div className="design-gallery">
-      <div className="container">
-        <div className="design-gallery-header">
-          <h1 className="design-gallery-title">Design Gallery</h1>
-          <p className="design-gallery-description">
-            A showcase of my design work. Replace these with your actual design 
-            projects, mockups, and creative work.
-          </p>
+    <section className="design-gallery-section">
+      {/* Background */}
+      <img
+        src={Bg}
+        alt="Design Gallery Background"
+        className="design-gallery-bg"
+      />
+
+      {/* Heading */}
+      <h1 className="design-gallery-heading">
+        Design Gallery
+      </h1>
+
+      {/* ===== Pillars Container ===== */}
+      <div className="design-gallery-pillars">
+        <div className="pillar pillar-orange">
+          <img src={foodDelivery} alt="Design 1 - Food Delivery" />
         </div>
-        
-        <div className="gallery-grid">
-          <div className="gallery-item">
-            <div className="gallery-item-image">
-              Design Image
-            </div>
-            <div className="gallery-item-content">
-              <h3 className="gallery-item-title">Design One</h3>
-              <p className="gallery-item-description">
-                Description of your first design project. Explain your design process 
-                and inspiration.
-              </p>
-            </div>
-          </div>
-          
-          <div className="gallery-item">
-            <div className="gallery-item-image">
-              Design Image
-            </div>
-            <div className="gallery-item-content">
-              <h3 className="gallery-item-title">Design Two</h3>
-              <p className="gallery-item-description">
-                Description of your second design project. Highlight the key design 
-                elements and choices.
-              </p>
-            </div>
-          </div>
-          
-          <div className="gallery-item">
-            <div className="gallery-item-image">
-              Design Image
-            </div>
-            <div className="gallery-item-content">
-              <h3 className="gallery-item-title">Design Three</h3>
-              <p className="gallery-item-description">
-                Description of your third design project. Share the impact and 
-                results of your design.
-              </p>
-            </div>
-          </div>
-          
-          <div className="gallery-item">
-            <div className="gallery-item-image">
-              Design Image
-            </div>
-            <div className="gallery-item-content">
-              <h3 className="gallery-item-title">Design Four</h3>
-              <p className="gallery-item-description">
-                Description of your fourth design project. Add your personal touch 
-                and unique style.
-              </p>
-            </div>
-          </div>
+        <div className="pillar pillar-pink">
+          <img src={carouselPost} alt="Design 2 - Carousel Post" />
+        </div>
+        <div className="pillar pillar-purple">
+          <img src={portal} alt="Design 3 - Portal" />
+        </div>
+        <div className="pillar pillar-green">
+          <img src={agrisense} alt="Design 4 - Agrisense" />
+        </div>
+        <div className="pillar pillar-red">
+          <img src={anime} alt="Design 5 - Anime" />
         </div>
       </div>
-    </div>
+    </section>
   );
 }
 
