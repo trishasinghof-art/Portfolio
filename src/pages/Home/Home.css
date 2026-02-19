@@ -18,7 +18,7 @@
 
 .portfolio-heading {
   position: absolute;
-  top: -50px;
+  top: -60px;
   left: 50%;
   transform: translateX(-50%);
   font-size: 150px;
@@ -44,12 +44,12 @@
 .side-column {
   height: 100vh;
   display: flex;
-  align-items: flex-start;      
-  padding-top: 80px;           
+  align-items: flex-start;
+  padding-top: 20px;
 }
 
 .side-text {
-  max-width: 220px;             
+  max-width: 220px;
   font-size: 13px;
   line-height: 1.9;
   color: #555;
@@ -82,9 +82,8 @@
 
 .file-wrapper {
   position: relative;
-  width: 700px;
-  margin-top: 120px;
-  transform: translateY(30px);
+  width: 950px;          /* Increased to properly contain stack */
+  margin-top: 630px;
 }
 
 /* BACK SVG PANEL */
@@ -92,9 +91,9 @@
 .folder-back {
   position: absolute;
   bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  left: 60px;
+  width: 95%;
+  height: auto;          /* IMPORTANT: prevents distortion */
   z-index: 1;
 }
 
@@ -102,35 +101,63 @@
 
 .file-projects {
   position: absolute;
-  bottom: 90px; /* Adjust slightly if needed */
+  bottom: 5px;         /* Controls vertical placement inside folder */
   left: 50%;
   transform: translateX(-50%);
-  display: flex;
-  gap: 25px;
+  width: 600px;          /* Stack area width */
+  height: 0;             /* Prevent flex interference */
   z-index: 2;
 }
 
-/* IMPORTANT: No fixed width or height */
+/* Stack Images Like Real Documents */
 
 .file-projects img {
-  display: block;
+  position: absolute;
+  bottom: 0;
+  width: 30%;
+  height: auto;
   border-radius: 12px;
-  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 18px 35px rgba(0, 0, 0, 0.25);
+  transition: transform 0.4s ease;
 }
+
+/* Horizontal Offsets (Balanced Center Stack) */
+
+.file-projects img:nth-child(1) { left: -120px;  width: 27%; bottom: 4px; z-index: 100;
+  height: auto;
+  transform: rotate(-8.61deg); }
+.file-projects img:nth-child(2) { left: 20px; width: 50%; bottom: 8px;  z-index: 90;
+  height: auto;
+  transform: rotate(-2.91deg); }
+.file-projects img:nth-child(3) { left: 20px;width: 41%; bottom: 200px;
+  height: auto;
+  transform: rotate(-3.87deg); }
+.file-projects img:nth-child(4) { left: 280px;width: 47%; bottom: 280px;
+  height: auto;
+  transform: rotate(5.13deg); }
+.file-projects img:nth-child(5) { left: 300px; width: 50%; bottom: 10px; z-index: 100;
+  height: auto;
+  transform: rotate(1.91deg);}
+.file-projects img:nth-child(6) { left: 450px; width: 40%; bottom: 8px;
+  height: auto;
+  transform: rotate(7.4deg);}
 
 /* FRONT SVG PANEL */
 
 .folder-front {
   position: absolute;
   bottom: 0;
-  left: 0;
+  left: -15px;
   width: 100%;
-  height: 100%;
+  height: auto;         /* IMPORTANT */
   z-index: 3;
   pointer-events: none;
+  
 }
 
+/* Dot alignment adjustment */
+
 .front-folder-dot {
-  position: relative;
-  transform: translateX(-43px);
+  transform: scale(0.87) translateX(-43px);
+  transform-origin: bottom center;
 }

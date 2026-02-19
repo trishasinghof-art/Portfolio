@@ -4,6 +4,12 @@ import "./Home.css";
 // IMPORT FOLDER PANELS
 import folderBack from "../../assets/gallery/FolderBack.svg";
 import folderFront from "../../assets/gallery/FolderFront.svg";
+import portal1 from "../../assets/fileImage/portal1.png";
+import carousal1 from "../../assets/fileImage/carousal1.png";
+import agrisense1 from "../../assets/fileImage/agrisense1.png";
+import carousal2 from "../../assets/fileImage/carousal2.png";
+import anime1 from "../../assets/fileImage/anime1.png";
+import fooddel1 from "../../assets/fileImage/fooddel1.png";
 
 const Home = () => {
   return (
@@ -52,13 +58,13 @@ const Home = () => {
           />
 
           {/* PROJECT IMAGES (NO DIMENSIONS APPLIED) */}
-          <div className="file-projects">
-            <img src="https://via.placeholder.com/200x300" alt="project1" />
-            <img src="https://via.placeholder.com/220x260" alt="project2" />
-            <img src="https://via.placeholder.com/180x320" alt="project3" />
-            <img src="https://via.placeholder.com/240x280" alt="project4" />
-            <img src="https://via.placeholder.com/210x300" alt="project5" />
-            <img src="https://via.placeholder.com/190x270" alt="project6" />
+           <div className="file-projects">
+            <img src={portal1} alt="Portal project" />
+            <img src={carousal1} alt="Carousal project 1" />
+            <img src={agrisense1} alt="Agrisense project" />
+            <img src={carousal2} alt="Carousal project 2" />
+            <img src={anime1} alt="Anime project" />
+            <img src={fooddel1} alt="Food delivery project" />
           </div>
 
           {/* FRONT PANEL */}
