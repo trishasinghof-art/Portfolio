@@ -1,4 +1,5 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import "./Home.css";
 
 // IMPORT FOLDER PANELS
@@ -12,6 +13,12 @@ import anime1 from "../../assets/fileImage/anime1.png";
 import fooddel1 from "../../assets/fileImage/fooddel1.png";
 
 const Home = () => {
+  const navigate = useNavigate();
+
+  const handleNavigateToIntroduction = () => {
+    navigate("/introduction");
+  };
+
   return (
     <div className="Home-container">
 
@@ -55,16 +62,18 @@ const Home = () => {
             src={folderBack} 
             alt="Folder Back" 
             className="folder-back"
+            onClick={handleNavigateToIntroduction}
+            style={{ cursor: 'pointer' }}
           />
 
           {/* PROJECT IMAGES (NO DIMENSIONS APPLIED) */}
            <div className="file-projects">
-            <img src={portal1} alt="Portal project" />
-            <img src={carousal1} alt="Carousal project 1" />
-            <img src={agrisense1} alt="Agrisense project" />
-            <img src={carousal2} alt="Carousal project 2" />
-            <img src={anime1} alt="Anime project" />
-            <img src={fooddel1} alt="Food delivery project" />
+            <img src={portal1} alt="Portal project" onClick={handleNavigateToIntroduction} style={{ cursor: 'pointer' }} />
+            <img src={carousal1} alt="Carousal project 1" onClick={handleNavigateToIntroduction} style={{ cursor: 'pointer' }} />
+            <img src={agrisense1} alt="Agrisense project" onClick={handleNavigateToIntroduction} style={{ cursor: 'pointer' }} />
+            <img src={carousal2} alt="Carousal project 2" onClick={handleNavigateToIntroduction} style={{ cursor: 'pointer' }} />
+            <img src={anime1} alt="Anime project" onClick={handleNavigateToIntroduction} style={{ cursor: 'pointer' }} />
+            <img src={fooddel1} alt="Food delivery project" onClick={handleNavigateToIntroduction} style={{ cursor: 'pointer' }} />
           </div>
 
           {/* FRONT PANEL */}
@@ -72,6 +81,8 @@ const Home = () => {
             src={folderFront} 
             alt="Folder Front" 
             className="folder-front front-folder-dot"
+            onClick={handleNavigateToIntroduction}
+            style={{ cursor: 'pointer' }}
           />
 
         </div>

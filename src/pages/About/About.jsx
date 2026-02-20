@@ -21,18 +21,15 @@ function About() {
   const itemRefs = useRef([]);
 
   const handleClick = (index) => {
-    // Toggle behavior: clicking same index resets offsets
     if (activeIndex === index) {
       setOffsets(new Array(FILES.length).fill(0));
       setActiveIndex(null);
       return;
     }
 
-    // Collect overlapping indices (those above the clicked file)
     const overlapping = [];
     for (let i = index + 1; i < FILES.length; i++) overlapping.push(i);
 
-    // If nothing overlaps, reset offsets and set active
     if (overlapping.length === 0) {
       setOffsets(new Array(FILES.length).fill(0));
       setActiveIndex(index);
@@ -46,20 +43,14 @@ function About() {
     const clickedRect = clickedEl.getBoundingClientRect();
     const topmostRect = topmostEl.getBoundingClientRect();
 
-    // Compute shift so bottom of clicked aligns with top of topmost overlapping
     const shift = clickedRect.bottom - topmostRect.top;
-
-    const REDUCTION = 75; // pixels to reduce for the topmost overlapping file
+    const REDUCTION = 75;
 
     const newOffsets = new Array(FILES.length).fill(0);
     const topmostIndex = overlapping[overlapping.length - 1];
+
     for (let i = index + 1; i < FILES.length; i++) {
-      if (i === topmostIndex) {
-        // reduce the topmost file's downward displacement to avoid excess white space
-        newOffsets[i] = Math.max(0, shift - REDUCTION);
-      } else {
-        newOffsets[i] = shift;
-      }
+      newOffsets[i] = i === topmostIndex ? Math.max(0, shift - REDUCTION) : shift;
     }
 
     setOffsets(newOffsets);
@@ -69,21 +60,76 @@ function About() {
   return (
     <section className="about-me-section">
       <div className="files-container">
-        {FILES.map((file, index) => {
-          return (
-            <div
-              key={file.id}
-              className={`file-item`}
-              onClick={() => handleClick(index)}
-              ref={(el) => (itemRefs.current[index] = el)}
-              style={{
-                transform: `translateX(-50%) translateY(${offsets[index] || 0}px)`,
-              }}
-            >
-              <img src={file.img} alt={file.label} />
-            </div>
-          );
-        })}
+        {FILES.map((file, index) => (
+          <div
+            key={file.id}
+            className="file-item"
+            onClick={() => handleClick(index)}
+            ref={(el) => (itemRefs.current[index] = el)}
+            style={{
+              transform: `translateX(-50%) translateY(${offsets[index] || 0}px)`,
+            }}
+          >
+            <img src={file.img} alt={file.label} />
+
+            {/* ===== EDUCATION TAG (ALWAYS VISIBLE) ===== */}
+            {index === 0 && (
+              <div className="education-tag">EDUCATION</div>
+            )}
+
+            {/* ===== EDUCATION CONTENT ===== */}
+            {index === 0 && activeIndex === 0 && (
+              <div className="education-content">
+                <div className="education-body">
+                  {/* LEFT TIMELINE */}
+                  <div className="timeline">
+                    <div className="timeline-line"></div>
+                    <div className="timeline-progress"></div>
+
+                    <div className="timeline-dot dot-top"></div>
+                    <div className="timeline-dot dot-bottom"></div>
+
+                    <div className="nib nib-top">✒</div>
+                    <div className="nib nib-bottom">✒</div>
+                  </div>
+
+                  {/* RIGHT CONTENT */}
+                  <div className="education-text">
+                    <div className="edu-block">
+                      <div className="edu-year">2024 - 2028</div>
+                      <div className="edu-desc">
+                        The Ajay Kumar Garg Engineering College,
+                        <br />
+                        Ghaziabad, Uttar Pradesh
+                      </div>
+                      <div className="edu-pill">
+                        Computer Science & Engineering
+                      </div>
+                    </div>
+
+                    <div className="edu-block">
+                      <div className="edu-year">2015 - 2023</div>
+                      <div className="edu-desc">
+                        Seth M.R. Jaipuria School,
+                        <br />
+                        Vineet Khand, Gomti Nagar, Lucknow
+                      </div>
+                      <div className="edu-pill">Schooling</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            )}
+
+            {/* ABOUT ME overlay (unchanged) */}
+            {index === 4 && (
+              <div className="overlay-text">
+                <div className="overlay-small">Know More</div>
+                <div className="overlay-large">About Me</div>
+              </div>
+            )}
+          </div>
+        ))}
       </div>
     </section>
   );

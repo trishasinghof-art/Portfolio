@@ -82,7 +82,7 @@
 
 .file-wrapper {
   position: relative;
-  width: 950px;          /* Increased to properly contain stack */
+  width: 950px;
   margin-top: 630px;
 }
 
@@ -93,7 +93,7 @@
   bottom: 0;
   left: 60px;
   width: 95%;
-  height: auto;          /* IMPORTANT: prevents distortion */
+  height: auto;
   z-index: 1;
 }
 
@@ -101,11 +101,11 @@
 
 .file-projects {
   position: absolute;
-  bottom: 5px;         /* Controls vertical placement inside folder */
+  bottom: 5px;
   left: 50%;
   transform: translateX(-50%);
-  width: 600px;          /* Stack area width */
-  height: 0;             /* Prevent flex interference */
+  width: 600px;
+  height: 0;
   z-index: 2;
 }
 
@@ -118,29 +118,87 @@
   height: auto;
   border-radius: 12px;
   box-shadow: 0 18px 35px rgba(0, 0, 0, 0.25);
-  transition: transform 0.4s ease;
+
+  /* ⭐ smoother animation */
+  transition: transform 0.45s cubic-bezier(.22,.61,.36,1);
+  will-change: transform;
 }
 
-/* Horizontal Offsets (Balanced Center Stack) */
+/* ================= ORIGINAL STACK (UNCHANGED) ================= */
 
-.file-projects img:nth-child(1) { left: -120px;  width: 27%; bottom: 4px; z-index: 100;
-  height: auto;
-  transform: rotate(-8.61deg); }
-.file-projects img:nth-child(2) { left: 20px; width: 50%; bottom: 8px;  z-index: 90;
-  height: auto;
-  transform: rotate(-2.91deg); }
-.file-projects img:nth-child(3) { left: 20px;width: 41%; bottom: 200px;
-  height: auto;
-  transform: rotate(-3.87deg); }
-.file-projects img:nth-child(4) { left: 280px;width: 47%; bottom: 280px;
-  height: auto;
-  transform: rotate(5.13deg); }
-.file-projects img:nth-child(5) { left: 300px; width: 50%; bottom: 10px; z-index: 100;
-  height: auto;
-  transform: rotate(1.91deg);}
-.file-projects img:nth-child(6) { left: 450px; width: 40%; bottom: 8px;
-  height: auto;
-  transform: rotate(7.4deg);}
+.file-projects img:nth-child(1) {
+  left: -120px;
+  width: 27%;
+  bottom: 4px;
+  z-index: 100;
+  transform: rotate(-8.61deg);
+}
+
+.file-projects img:nth-child(2) {
+  left: 20px;
+  width: 50%;
+  bottom: 8px;
+  z-index: 90;
+  transform: rotate(-2.91deg);
+}
+
+.file-projects img:nth-child(3) {
+  left: 20px;
+  width: 41%;
+  bottom: 200px;
+  transform: rotate(-3.87deg);
+}
+
+.file-projects img:nth-child(4) {
+  left: 280px;
+  width: 47%;
+  bottom: 280px;
+  transform: rotate(5.13deg);
+}
+
+.file-projects img:nth-child(5) {
+  left: 300px;
+  width: 50%;
+  bottom: 10px;
+  z-index: 100;
+  transform: rotate(1.91deg);
+}
+
+.file-projects img:nth-child(6) {
+  left: 450px;
+  width: 40%;
+  bottom: 10px;
+  transform: rotate(7.4deg);
+}
+
+/* =======================================================
+   ✨ HOVER SPREAD EFFECT (SUBTLE + DIRECTIONAL)
+   Triggered when hovering anywhere on the folder
+======================================================= */
+
+.file-wrapper:hover .file-projects img:nth-child(1) {
+  transform: translate(-55px, -37px) rotate(-8.61deg);
+}
+
+.file-wrapper:hover .file-projects img:nth-child(2) {
+  transform: translate(-15px, -38px) rotate(-2.91deg);
+}
+
+.file-wrapper:hover .file-projects img:nth-child(3) {
+  transform: translate(-30px, -90px) rotate(-3.87deg);
+}
+
+.file-wrapper:hover .file-projects img:nth-child(4) {
+  transform: translate(30px, -90px) rotate(5.13deg);
+}
+
+.file-wrapper:hover .file-projects img:nth-child(5) {
+  transform: translate(15px, -50px) rotate(1.91deg);
+}
+
+.file-wrapper:hover .file-projects img:nth-child(6) {
+  transform: translate(140px, -50px) rotate(7.4deg);
+}
 
 /* FRONT SVG PANEL */
 
@@ -149,10 +207,9 @@
   bottom: 0;
   left: -15px;
   width: 100%;
-  height: auto;         /* IMPORTANT */
+  height: auto;
   z-index: 3;
   pointer-events: none;
-  
 }
 
 /* Dot alignment adjustment */
