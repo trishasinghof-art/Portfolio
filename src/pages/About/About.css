@@ -203,7 +203,7 @@
   left: 65%;
   transform: translateX(-50%);
   font-family: "Lekton", monospace;
-  font-size: clamp(27px, 1.3vw, 30px);
+   font-size: clamp(27px, 1.3vw, 30px);
   letter-spacing: 0.18em;
   color: #f4dede;
   z-index: 1000;
@@ -333,4 +333,392 @@
   font-size: clamp(10px, 0.85vw, 13px);
   backdrop-filter: blur(6px);
   color: #7a1f1f;
+}
+/* =====================================================
+   LET'S CONNECT SECTION
+===================================================== */
+
+/* top tab */
+.connect-tag {
+  position: absolute;
+  top: 1.5vw;
+  left: 18.25%;
+  transform: translateX(-50%);
+  font-family: "Lekton", monospace;
+  font-size: clamp(27px, 1.3vw, 30px);
+  letter-spacing: 0.18em;
+  color: #f4dede;
+  pointer-events: none;
+}
+
+/* main wrapper */
+.connect-content {
+  position: absolute;
+  inset: 0;
+  padding: 6vw 17vw;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #fff;
+  pointer-events: none;
+  transform: translateX(20px);
+}
+
+/* left text */
+.connect-left {
+  max-width: 40vw;
+  display: flex;
+  flex-direction: column;
+}
+
+.connect-heading {
+  font-family: "Inria Serif", serif;
+  font-style: italic;
+  font-size: clamp(36px, 4.2vw, 72px);
+  line-height: 1.08;
+  font-weight: 500;
+  margin-bottom: 1.5vw;
+}
+
+.connect-sub {
+  font-family: "Inria Serif", serif;
+  font-style: italic;
+  font-size: clamp(14px, 1.2vw, 20px);
+  opacity: 0.9;
+  margin-bottom: 1.5vw;
+}
+
+.connect-left .start-project-btn {
+  align-self: flex-start;
+  margin-top: 0.5vw;
+}
+
+/* =====================================================
+   FORM CARD (mirror glaze)
+===================================================== */
+
+.connect-form-card {
+  width: clamp(260px, 26vw, 420px);
+  padding: 2vw 1.6vw;
+  border-radius: 18px;
+  background: rgba(120, 70, 50, 0.45);
+  backdrop-filter: blur(10px);
+  box-shadow:
+    inset 0 0 0 1px rgba(255,255,255,0.15),
+    0 20px 40px rgba(0,0,0,0.25);
+  display: flex;
+  flex-direction: column;
+  gap: 0.9vw;
+  pointer-events: auto;
+}
+
+.connect-form-stack {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 28px;
+  pointer-events: auto;
+}
+
+/* inputs */
+.connect-form-card input,
+.connect-form-card textarea {
+  width: 100%;
+  border: none;
+  outline: none;
+  border-radius: 6px;
+  background: rgba(230, 220, 205, 0.85);
+  padding: 0.7vw 0.9vw;
+  font-family: "Inter", sans-serif;
+  font-style: italic;
+  font-weight: 300;
+  font-size: clamp(12px, 0.9vw, 14px);
+  box-shadow: 0 3px 6px rgba(0,0,0,0.25);
+}
+
+/* equal heights */
+.connect-form-card input {
+  height: 2.6vw;
+  min-height: 36px;
+}
+
+/* larger textarea */
+.connect-form-card textarea {
+  height: 7vw;
+  min-height: 110px;
+  resize: none;
+}
+
+/* =====================================================
+   START PROJECT BUTTON (Liquid Glass)
+===================================================== */
+
+.start-project-btn {
+  position: relative;
+  border: none;
+  cursor: pointer;
+  border-radius: 999px;
+  padding: 16px 36px;
+  width: clamp(220px, 20vw, 320px);
+  background: linear-gradient(135deg, rgba(92, 52, 32, 0.75) 0%, rgba(120, 70, 50, 0.8) 45%, rgba(140, 85, 60, 0.72) 100%);
+  color: #f5f2ff;
+  box-shadow:
+    0 18px 36px rgba(0, 0, 0, 0.35),
+    0 8px 18px rgba(60, 32, 20, 0.45),
+    inset 0 1px 0 rgba(255, 255, 255, 0.14);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(16px);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+  pointer-events: auto;
+  overflow: hidden;
+}
+
+.start-project-text {
+  position: relative;
+  z-index: 2;
+  font-family: "Inter", sans-serif;
+  font-weight: 500;
+  font-size: clamp(14px, 1.1vw, 18px);
+  letter-spacing: 0.04em;
+  text-transform: none;
+}
+
+.start-project-btn::before {
+  content: "";
+  position: absolute;
+  top: 6px;
+  left: 10px;
+  right: 10px;
+  height: 38%;
+  background: linear-gradient(180deg, rgba(255, 245, 230, 0.28), rgba(255, 240, 220, 0.06));
+  opacity: 0.65;
+  filter: blur(2px);
+  border-radius: 999px;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.start-project-btn::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -26px;
+  width: 70%;
+  height: 60%;
+  transform: translateX(-50%);
+  background: radial-gradient(circle, rgba(180, 110, 70, 0.42) 0%, rgba(160, 95, 60, 0.22) 45%, rgba(80, 50, 35, 0) 70%);
+  filter: blur(18px);
+  opacity: 0.58;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.start-project-btn:hover {
+  transform: translateY(-2px);
+  background: linear-gradient(135deg, rgba(110, 62, 40, 0.82) 0%, rgba(135, 80, 55, 0.85) 45%, rgba(155, 95, 65, 0.78) 100%);
+  box-shadow:
+    0 22px 40px rgba(0, 0, 0, 0.4),
+    0 10px 22px rgba(80, 45, 30, 0.5),
+    inset 0 1px 0 rgba(255, 255, 255, 0.18);
+}
+
+.start-project-btn:hover::after {
+  opacity: 0.68;
+}
+/* =====================================================
+   CONTACT ME SECTION
+===================================================== */
+
+.contact-tag {
+  position: absolute;
+  top: 1.2vw;
+  left: 76%;
+  transform: translateX(-50%);
+  font-family: "Lekton", monospace;
+  font-size: clamp(27px, 1.3vw, 30px);
+  letter-spacing: 0.12em;
+  color: #cfe7ea;
+  pointer-events: none;
+}
+
+/* main wrapper */
+.contact-content {
+  position: absolute;
+  inset: 0;
+  padding: 6vw 8vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+
+/* grid */
+.contact-grid {
+  width: min(900px, 70vw);
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 4vw;
+  pointer-events: auto;
+}
+
+/* cards */
+.contact-card {
+  position: relative;
+  border-radius: 14px;
+  padding: 1.2vw 1.4vw 1vw;
+  text-decoration: none;
+  color: white;
+  height: clamp(170px, 8vw, 130px);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.25);
+  transition: transform 0.25s ease;
+}
+
+.contact-card:hover {
+  transform: translateY(-6px);
+}
+
+/* individual colors (matched to image) */
+.contact-card.gmail {
+  background: #000000;
+}
+
+.contact-card.github {
+  background: #79d6db;
+  color: #000;
+}
+
+.contact-card.linkedin {
+  background: #0a2a9e;
+}
+
+.contact-card.behance {
+  background: #d9d9d9;
+  color: #000;
+}
+
+/* icon */
+.contact-icon {
+  font-size: clamp(18px, 1.6vw, 26px);
+  font-weight: 700;
+  font-family: Inter, sans-serif;
+}
+
+.contact-icon img {
+  width: 43px;
+  height: auto;
+  object-fit: contain;
+  display: block;
+}
+
+/* divider line with dotted ends */
+.contact-divider {
+  position: relative;
+  height: 1px;
+  background: currentColor;
+  opacity: 0.6;
+}
+
+.contact-divider::before,
+.contact-divider::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  width: 4px;
+  height: 4px;
+  background: currentColor;
+  border-radius: 50%;
+  transform: translateY(-50%);
+}
+
+.contact-divider::before {
+  left: -6px;
+}
+
+.contact-divider::after {
+  right: -6px;
+}
+
+/* link text */
+.contact-link {
+  font-family: "Inter", sans-serif;
+  font-style: italic;
+  font-weight: 300;
+  font-size: clamp(11px, 0.9vw, 14px);
+  opacity: 0.9;
+  word-break: break-word;
+  text-align: right;
+  margin-left: auto;
+}
+/* =====================================================
+   SOFT SKILLS — MAGAZINE
+===================================================== */
+
+.soft-content {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+
+/* ---------- page display ---------- */
+.soft-page-wrap {
+  display: flex;
+  align-items: center;
+  gap: 2vw;
+  pointer-events: auto;
+}
+
+.soft-page-display {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.soft-page {
+  width: clamp(220px, 22vw, 360px);
+  height: auto;
+  display: block;
+}
+
+/* ---------- arrows ---------- */
+.soft-arrow {
+  border: none;
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(6px);
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  font-size: 20px;
+  cursor: pointer;
+  transition: transform 0.2s ease, background 0.2s ease;
+  pointer-events: auto;
+}
+
+.soft-arrow:hover {
+  transform: scale(1.08);
+  background: rgba(255, 255, 255, 0.9);
+}
+
+.soft-arrow.left {
+  margin-right: 0.5vw;
+}
+
+.soft-arrow.right {
+  margin-left: 0.5vw;
+}
+
+/* ---------- responsive ---------- */
+@media (max-width: 768px) {
+  .soft-page-display {
+    width: 100%;
+  }
+
+  .soft-page {
+    width: 52vw;
+  }
 }
