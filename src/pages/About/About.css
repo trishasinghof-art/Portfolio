@@ -210,6 +210,19 @@
   pointer-events: auto;
 }
 
+.soft-skills-tag {
+  position: absolute;
+  top: 1.2vw;
+  left: 32%;
+  transform: translateX(-50%);
+  font-family: "Lekton", monospace;
+  font-size: clamp(27px, 1.3vw, 30px);
+  letter-spacing: 0.15em;
+  color: #f4dede;
+  z-index: 1000;
+  pointer-events: auto;
+}
+
 /* ---------- MAIN LAYOUT ---------- */
 .education-body {
   display: flex;
@@ -673,16 +686,34 @@
   pointer-events: auto;
 }
 
-.soft-page-display {
+/* Cover page display (single page) */
+.soft-cover-display {
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
+/* Dual page spread display (book-style) */
+.soft-spread-display {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5vw;
+}
+
 .soft-page {
-  width: clamp(220px, 22vw, 360px);
+  width: 220px;
+  max-width: 220px;
   height: auto;
   display: block;
+  flex: 0 0 auto;
+}
+
+/* Override global .file-item img rule for soft skills */
+.soft-content .soft-page {
+  width: 325px !important;
+  max-width: 325px;
+  object-fit: contain;
 }
 
 /* ---------- arrows ---------- */
@@ -714,11 +745,23 @@
 
 /* ---------- responsive ---------- */
 @media (max-width: 768px) {
-  .soft-page-display {
+  .soft-cover-display {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .soft-spread-display {
+    flex-direction: column;
+    gap: 2vw;
     width: 100%;
   }
 
   .soft-page {
-    width: 52vw;
+    width: 220px !important;
+    max-width: 220px;
+  }
+
+  .soft-content .soft-page {
+    width: 220px !important;
   }
 }

@@ -12,6 +12,17 @@ import githubIcon from "../../assets/icons/github.svg";
 import linkedinIcon from "../../assets/icons/linkdin.svg";
 import behanceIcon from "../../assets/icons/behance.svg";
 
+/* ===== Soft Skills Pages ===== */
+import page1 from "../../assets/SoftSkills/page_1.png";
+import page2 from "../../assets/SoftSkills/page_2.png";
+import page3 from "../../assets/SoftSkills/page_3.png";
+import page35 from "../../assets/SoftSkills/page_3.5.png";
+import page4 from "../../assets/SoftSkills/page_4.png";
+import page5 from "../../assets/SoftSkills/page_5.png";
+import page6 from "../../assets/SoftSkills/page_6.png";
+import page7 from "../../assets/SoftSkills/page_7.png";
+import page8 from "../../assets/SoftSkills/page_8.png";
+
 const FILES = [
   { id: 0, label: "Education", img: red },
   { id: 1, label: "Soft Skills", img: lavender },
@@ -20,15 +31,26 @@ const FILES = [
   { id: 4, label: "About Me", img: purple, center: true },
 ];
 
+/* Soft Skills Pages Array */
+const SOFT_PAGE_COVER = page1;
+const SOFT_SPREADS = [
+  { left: page2, right: page3 },
+  { left: page35, right: page4 },
+  { left: page5, right: page6 },
+  { left: page7, right: page8 },
+];
+
 function About() {
   const [activeIndex, setActiveIndex] = useState(null);
   const [offsets, setOffsets] = useState(() => new Array(FILES.length).fill(0));
+  const [spreadIndex, setSpreadIndex] = useState(0);
   const itemRefs = useRef([]);
 
   const handleClick = (index) => {
     if (activeIndex === index) {
       setOffsets(new Array(FILES.length).fill(0));
       setActiveIndex(null);
+      setSpreadIndex(0);
       return;
     }
 
@@ -60,6 +82,22 @@ function About() {
 
     setOffsets(newOffsets);
     setActiveIndex(index);
+    if (index !== 1) setSpreadIndex(0);
+  };
+
+  /* Soft Skills Book Navigation */
+  const nextSpread = (e) => {
+    e.stopPropagation();
+    if (spreadIndex === SOFT_SPREADS.length) {
+      setSpreadIndex(0);
+    } else {
+      setSpreadIndex((p) => p + 1);
+    }
+  };
+
+  const prevSpread = (e) => {
+    e.stopPropagation();
+    setSpreadIndex((p) => Math.max(0, p - 1));
   };
 
   return (
@@ -81,6 +119,11 @@ function About() {
     {/* ===== EDUCATION TAG (ALWAYS VISIBLE) ===== */}
     {index === 0 && (
       <div className="education-tag">EDUCATION</div>
+    )}
+
+    {/* ===== SOFT SKILLS TAG (ALWAYS VISIBLE) ===== */}
+    {index === 1 && (
+      <div className="soft-skills-tag">SOFT SKILLS</div>
     )}
 
     {/* ===== LET'S CONNECT TAG (ALWAYS VISIBLE) ===== */}
@@ -124,6 +167,54 @@ function About() {
               <div className="edu-pill">Schooling</div>
             </div>
           </div>
+        </div>
+      </div>
+    )}
+
+    {/* ===== SOFT SKILLS CONTENT ===== */}
+    {index === 1 && activeIndex === 1 && (
+      <div className="soft-content">
+        <div className="soft-page-wrap">
+          {/* Back Arrow - hidden on cover page */}
+          {spreadIndex > 0 && (
+            <button className="soft-arrow left" onClick={prevSpread}>
+              ←
+            </button>
+          )}
+
+          {/* Cover Page (spreadIndex 0) */}
+          {spreadIndex === 0 && (
+            <div className="soft-cover-display">
+              <img
+                src={SOFT_PAGE_COVER}
+                className="soft-page"
+                alt="Soft skills cover"
+              />
+            </div>
+          )}
+
+          {/* Dual Page Spreads (spreadIndex 1-4) */}
+          {spreadIndex > 0 && (
+            <div className="soft-spread-display">
+              <img
+                src={SOFT_SPREADS[spreadIndex - 1].left}
+                className="soft-page soft-page-left"
+                alt={`Soft skills page ${spreadIndex * 2}`}
+              />
+              <img
+                src={SOFT_SPREADS[spreadIndex - 1].right}
+                className="soft-page soft-page-right"
+                alt={`Soft skills page ${spreadIndex * 2 + 1}`}
+              />
+            </div>
+          )}
+
+          {/* Forward Arrow - hidden on last spread */}
+          {spreadIndex < SOFT_SPREADS.length && (
+            <button className="soft-arrow right" onClick={nextSpread}>
+              →
+            </button>
+          )}
         </div>
       </div>
     )}
