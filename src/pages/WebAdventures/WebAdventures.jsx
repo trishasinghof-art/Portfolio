@@ -1,5 +1,5 @@
 import "./WebAdventures.css";
-import React from "react";
+import React, { useState } from "react";
 import Bg from "../../assets/images/webDevBg.svg";
 import WorkoutPlanner from "../../assets/images/workoutplanner.svg";
 import GameDescription from "../../assets/images/Gamedescription.svg";
@@ -11,6 +11,23 @@ import image2 from "../../assets/images/image2.png";
 import image3 from "../../assets/images/image3.png";
 
 function WebAdventures() {
+  const images = [image1, image2, image3];
+  const [stackRotation, setStackRotation] = useState(0);
+
+  const handleStackClick = () => {
+    setStackRotation((prev) => (prev + 1) % images.length);
+  };
+
+  const getRotatedImages = () => {
+    return [
+      images[(0 + stackRotation) % images.length], // front
+      images[(1 + stackRotation) % images.length], // back-left
+      images[(2 + stackRotation) % images.length], // back-right
+    ];
+  };
+
+  const [frontImage, backLeftImage, backRightImage] = getRotatedImages();
+
   return (
     <section className="web-adventures-section">
       {/* Background */}
@@ -23,15 +40,15 @@ function WebAdventures() {
       {/* ===== PAGE 1 ===== */}
       <div className="adventure-page">
         {/* Left: Image stack */}
-        <div className="image-stack">
+        <div className="image-stack" onClick={handleStackClick} role="button" tabIndex="0" aria-label="Click to cycle through project images">
           <div className="image back left">
-            <img src={image2} alt="Back left project preview" />
+            <img src={backLeftImage} alt="Back left project preview" />
           </div>
           <div className="image front">
-            <img src={image1} alt="Front project preview" />
+            <img src={frontImage} alt="Front project preview" />
           </div>
           <div className="image back right">
-            <img src={image3} alt="Back right project preview" />
+            <img src={backRightImage} alt="Back right project preview" />
           </div>
         </div>
 
@@ -44,10 +61,10 @@ function WebAdventures() {
           />
 
           <div className="sticky-links">
-            <a href="#" aria-label="GitHub">
+            <a href="https://github.com/trishasinghof-art" aria-label="GitHub">
               <img src={github} alt="GitHub" />
             </a>
-            <a href="#" aria-label="Live Link">
+            <a href="https://workout-planner-rosy-nu.vercel.app/" aria-label="Live Link">
               <img src={linkIcon} alt="Live Link" />
             </a>
           </div>

@@ -1,10 +1,12 @@
 .introduction {
   background-color: #f3ddea; /* soft pink background */
-  height: calc(100vh - var(--navbar-height));
+  height: 100vh;
   position: relative;
   display: flex;
   flex-direction: column;
   overflow: hidden;
+  padding-top: 80px;
+  box-sizing: border-box;
 }
 
 /* Main layout */
@@ -113,6 +115,105 @@
   font-size: 1rem;
   line-height: 1.6;
   color: #333;
+}
+
+/* Resume Download Button */
+.resume-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-top: 2rem;
+  padding: 0.875rem 1.75rem;
+  
+  /* Styling */
+  background: linear-gradient(135deg, #7b3fe4 0%, #9d5ff8 100%);
+  color: white;
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 12px;
+  
+  /* Effects */
+  box-shadow: 0 4px 15px rgba(123, 63, 228, 0.3);
+  transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+  cursor: pointer;
+  border: none;
+  
+  /* Performance */
+  will-change: transform, box-shadow;
+  position: relative;
+  overflow: hidden;
+}
+
+.resume-btn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0) 100%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.resume-btn-icon {
+  width: 20px;
+  height: 20px;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  flex-shrink: 0;
+  position: relative;
+  z-index: 2;
+  transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.resume-btn span {
+  position: relative;
+  z-index: 2;
+}
+
+/* Hover state: lift and scale */
+.resume-btn:hover {
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 8px 25px rgba(123, 63, 228, 0.4);
+}
+
+.resume-btn:hover .resume-btn-icon {
+  transform: translateY(2px);
+  animation: icon-bounce 0.6s ease-in-out infinite;
+}
+
+/* Active state: press effect */
+.resume-btn:active {
+  transform: translateY(-1px) scale(0.98);
+  box-shadow: 0 2px 8px rgba(123, 63, 228, 0.2);
+}
+
+/* Icon bounce animation on hover */
+@keyframes icon-bounce {
+  0%, 100% {
+    transform: translateY(2px);
+  }
+  50% {
+    transform: translateY(-2px);
+  }
+}
+
+/* Focus state for keyboard navigation */
+.resume-btn:focus-visible {
+  outline: 2px solid #7b3fe4;
+  outline-offset: 2px;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .resume-btn {
+    padding: 0.75rem 1.5rem;
+    font-size: 0.95rem;
+  }
+
+  .resume-btn-icon {
+    width: 18px;
+    height: 18px;
+  }
 }
 
 /* Bottom checker strip */

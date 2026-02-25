@@ -1,6 +1,6 @@
 .web-adventures-section {
   position: relative;
-  padding: 6rem 2rem;
+  padding: 8rem 2rem 6rem 2rem;
 }
 
 /* Background */
@@ -46,6 +46,12 @@
   position: relative;
   width: 620px;
   height: 420px; /* critical: allows pyramid spacing */
+  cursor: pointer;
+  user-select: none;
+}
+
+.image-stack:hover {
+  opacity: 0.95;
 }
 
 /* Base image */
@@ -53,6 +59,7 @@
   position: absolute;
   border-radius: 12px;
   overflow: visible;
+  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
 .image img {
@@ -68,7 +75,7 @@
   z-index: 4;
 
   left: 50%;
-  top: -40px; /* UPWARD SHIFT FIX */
+  top: -20px; /* UPWARD SHIFT FIX */
   transform: translateX(-50%);
   box-shadow: 0 14px 34px rgba(0,0,0,0.18);
 }
@@ -116,15 +123,38 @@
   bottom: -20px;
   right: -20px;
   background: #ffffff;
-  padding: 0.8rem 1rem;
+  padding: 1rem 1.2rem;
   border-radius: 10px;
   display: flex;
-  gap: 1rem;
+  gap: 1.2rem;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+}
+
+.sticky-links a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: transform 0.25s ease-out;
+}
+
+.sticky-links a:hover {
+  transform: scale(1.08) translateY(-2px);
+}
+
+.sticky-links a:active {
+  transform: scale(0.96) translateY(0px);
 }
 
 .sticky-links img {
   width: 24px;
   height: 24px;
+  filter: brightness(0) saturate(100%) invert(27%) sepia(83%) saturate(696%) hue-rotate(246deg) brightness(103%) contrast(93%);
+  transition: filter 0.25s ease-out;
+}
+
+.sticky-links a:hover img {
+  filter: brightness(0) saturate(100%) invert(33%) sepia(89%) saturate(752%) hue-rotate(245deg) brightness(104%) contrast(96%);
 }
 
 /* Slight upward lift for visibility */
