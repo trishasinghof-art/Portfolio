@@ -95,7 +95,7 @@ function WebAdventures() {
             <a href="https://github.com/trishasinghof-art/Flappy_Bird" aria-label="GitHub">
               <img src={github} alt="GitHub" />
             </a>
-            <a href="#" aria-label="Live Link">
+            <a href="https://flappy-bird-delta-lemon.vercel.app/" aria-label="Live Link">
               <img src={linkIcon} alt="Live Link" />
             </a>
           </div>
