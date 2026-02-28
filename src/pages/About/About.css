@@ -1,3 +1,296 @@
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   RESPONSIVE OVERRIDES — ABOUT SECTION
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+@media (max-width: 1200px) {
+  .about-me-section {
+    min-height: 100vh;
+    width: 100vw;
+    margin-left: 0;
+    overflow-x: hidden;
+  }
+  .container {
+    max-width: 100vw;
+  }
+}
+
+@media (max-width: 992px) {
+  .about-me-section {
+    min-height: 100vh;
+    padding-top: 0;
+    padding-left: 0;
+    padding-right: 0;
+    overflow-x: hidden;
+  }
+  .education-body {
+    gap: 2vw;
+    margin-left: 4vw;
+  }
+  .connect-content {
+    padding: 6vw 4vw;
+  }
+  .contact-content {
+    padding: 6vw 2vw;
+  }
+}
+
+@media (max-width: 768px) {
+  .about-me-section {
+    min-height: 100vh;
+    width: 100vw;
+    margin-left: 0;
+    padding: 0;
+    overflow-x: hidden;
+  }
+  .education-body {
+    flex-direction: column;
+    gap: 2vw;
+    margin-left: 0;
+    align-items: stretch;
+  }
+  .education-content {
+    padding: 4vw 2vw;
+  }
+  .connect-content {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 6vw 2vw;
+    transform: none;
+  }
+  .connect-left {
+    max-width: 100%;
+    margin-bottom: 2vw;
+  }
+  .connect-form-card {
+    width: 100%;
+    min-width: 0;
+    max-width: 100%;
+    padding: 4vw 2vw;
+    gap: 18px;
+  }
+  .connect-form-stack {
+    margin-top: 18px;
+    gap: 18px;
+  }
+  .connect-form-card input,
+  .connect-form-card textarea {
+    font-size: 16px;
+    padding: 12px 14px;
+    min-height: 44px;
+  }
+  .connect-form-card textarea {
+    min-height: 80px;
+  }
+  .connect-send-btn {
+    width: 100%;
+    padding: 14px 0;
+    font-size: 18px;
+    min-height: 44px;
+  }
+  .start-project-btn {
+    width: 100%;
+    padding: 16px 0;
+    font-size: 18px;
+    min-height: 44px;
+  }
+  .contact-content {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 6vw 2vw;
+  }
+  .contact-grid {
+    grid-template-columns: 1fr;
+    gap: 18px;
+    width: 100%;
+    min-width: 0;
+    max-width: 100vw;
+  }
+  .contact-card {
+    min-width: 0;
+    max-width: 100vw;
+    font-size: 16px;
+    min-height: 44px;
+    padding: 18px 12px;
+  }
+  .contact-icon img {
+    width: 36px;
+  }
+  .soft-content {
+    padding: 0 2vw;
+  }
+  .soft-page-wrap,
+  .soft-spread-display {
+    flex-direction: column;
+    gap: 18px;
+    width: 100%;
+  }
+  .soft-page {
+    width: 160px !important;
+    max-width: 160px;
+  }
+  .soft-content .soft-page {
+    width: 160px !important;
+    max-width: 160px;
+  }
+}
+
+@media (max-width: 480px) {
+  .about-me-section {
+    min-height: 100vh;
+    width: 100vw;
+    margin-left: 0;
+    padding: 0;
+    overflow-x: hidden;
+  }
+  .about-me {
+    font-size: clamp(22px, 8vw, 32px);
+    line-height: 1.1;
+    overflow-wrap: break-word;
+  }
+  .overlay-small {
+    font-size: clamp(18px, 7vw, 24px);
+    line-height: 1.1;
+    overflow-wrap: break-word;
+  }
+  .overlay-large {
+    font-size: clamp(32px, 12vw, 40px);
+    line-height: 1.05;
+    overflow-wrap: break-word;
+    margin-bottom: 18px;
+  }
+  .education-content {
+    padding: 2vw 2vw;
+  }
+  .education-tag,
+  .soft-skills-tag,
+  .connect-tag,
+  .contact-tag {
+    font-size: clamp(18px, 6vw, 22px);
+    letter-spacing: 0.08em;
+  }
+  .education-body {
+    flex-direction: column;
+    gap: 12px;
+    margin-left: 0;
+    align-items: stretch;
+  }
+  .edu-year {
+    font-size: clamp(18px, 8vw, 28px);
+    margin-bottom: 0;
+  }
+  .edu-desc {
+    font-size: clamp(14px, 5vw, 16px);
+    line-height: 1.2;
+    margin-bottom: 8px;
+  }
+  .edu-pill {
+    font-size: clamp(10px, 4vw, 12px);
+    padding: 4px 12px;
+  }
+  .connect-content {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 4vw 2vw;
+    transform: none;
+  }
+  .connect-left {
+    max-width: 100%;
+    margin-bottom: 12px;
+  }
+  .connect-heading {
+    font-size: clamp(18px, 8vw, 28px);
+    line-height: 1.1;
+    margin-bottom: 8px;
+  }
+  .connect-sub {
+    font-size: clamp(12px, 5vw, 14px);
+    margin-bottom: 8px;
+  }
+  .connect-form-card {
+    width: 100%;
+    min-width: 0;
+    max-width: 100%;
+    padding: 18px 8px;
+    gap: 12px;
+  }
+  .connect-form-stack {
+    margin-top: 8px;
+    gap: 12px;
+  }
+  .connect-form-card input,
+  .connect-form-card textarea {
+    font-size: 16px;
+    padding: 12px 10px;
+    min-height: 44px;
+  }
+  .connect-form-card textarea {
+    min-height: 60px;
+  }
+  .connect-send-btn {
+    width: 100%;
+    padding: 14px 0;
+    font-size: 18px;
+    min-height: 44px;
+  }
+  .start-project-btn {
+    width: 100%;
+    padding: 16px 0;
+    font-size: 18px;
+    min-height: 44px;
+  }
+  .contact-content {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 4vw 2vw;
+  }
+  .contact-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+    width: 100%;
+    min-width: 0;
+    max-width: 100vw;
+  }
+  .contact-card {
+    min-width: 0;
+    max-width: 100vw;
+    font-size: 16px;
+    min-height: 44px;
+    padding: 14px 8px;
+  }
+  .contact-icon img {
+    width: 32px;
+  }
+  .soft-content {
+    padding: 0 2vw;
+  }
+  .soft-page-wrap,
+  .soft-spread-display {
+    flex-direction: column;
+    gap: 12px;
+    width: 100%;
+  }
+  .soft-page {
+    width: 120px !important;
+    max-width: 120px;
+  }
+  .soft-content .soft-page {
+    width: 120px !important;
+    max-width: 120px;
+  }
+}
+
+/* RESPONSIVE: File stack animation transform offsets reduced for mobile */
+@media (max-width: 768px) {
+  .files-container .file-item:nth-child(5) {
+    transform: translateX(-50%) translateY(30px); /* RESPONSIVE: reduced from 80px for mobile */
+  }
+}
+@media (max-width: 480px) {
+  .files-container .file-item:nth-child(5) {
+    transform: translateX(-50%) translateY(12px); /* RESPONSIVE: reduced from 80px for small mobile */
+  }
+}
 @import url('https://fonts.googleapis.com/css2?family=Libre+Bodoni:wght@400;500;600;700&family=League+Gothic&display=swap');
 
 /* =============================
@@ -23,51 +316,92 @@
    File Stack Container
 ============================= */
 
-.files-container {
-  /* Use full width so each file-item can span the viewport
-     while preserving vertical stacking */
-  width: 100%;
-  max-width: none; /* remove constrained width so images can be full-bleed */
-  display: flex;
-  flex-direction: column;
+
+
+
+.connect-send-btn {
+  position: relative;
+  display: inline-flex;
   align-items: center;
-  padding-top: 4rem;
-  gap: 3.5rem; /* equal vertical spacing */
-}
-
-/* Make the files-container a positioned block that matches the viewport
-   height so absolute-positioned file items can align to the bottom of the
-   viewport using bottom: 0. This keeps all files bottom-aligned as requested. */
-.files-container {
-  position: relative;
-  height: 100vh; /* reference height for bottom alignment */
-  overflow-x: hidden; /* prevent horizontal scroll when using full-bleed widths */
-}
-
-/* =============================
-   File Item
-============================= */
-
-.file-item {
-  position: relative;
-  width: 85%;
-  max-width: 900px;
+  justify-content: center;
+  padding: 14px 48px;
+  border: none;
+  border-radius: 50px;
   cursor: pointer;
-  transition: transform 0.6s ease;
+  font-size: 16px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  color: #4b2e16;
+  background: linear-gradient(
+    135deg,
+    rgba(210, 140, 80, 0.55) 0%,
+    rgba(140, 90, 45, 0.35) 40%,
+    rgba(181, 121, 63, 0.40) 100%
+  );
+  box-shadow:
+    0 0 0 1.5px rgba(181, 121, 63, 0.6),
+    inset 0  1px 0 rgba(255, 255, 255, 0.65),
+    inset 0 -1px 0 rgba(140, 90, 45, 0.2),
+    0  8px 32px rgba(120, 72, 32, 0.25),
+    0  2px  8px rgba(120, 72, 32, 0.15);
+  backdrop-filter: blur(16px) saturate(1.6);
+  -webkit-backdrop-filter: blur(16px) saturate(1.6);
+  overflow: hidden;
+  transition: all 0.25s ease;
 }
 
-.file-item img {
-  width: 100%;
-  display: block;
+/* Top specular highlight */
+.connect-send-btn::before {
+  content: '';
+  position: absolute;
+  top: 5px;
+  left: 18%;
+  right: 18%;
+  height: 35%;
+  border-radius: 50px;
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0));
+  pointer-events: none;
 }
 
-/* Slide-down behavior */
-.file-item.shift-down {
-  transform: translateY(75vh);
+/* Bottom warm sheen */
+.connect-send-btn::after {
+  content: '';
+  position: absolute;
+  bottom: 5px;
+  left: 25%;
+  right: 25%;
+  height: 20%;
+  border-radius: 50px;
+  background: linear-gradient(to top, rgba(210, 140, 80, 0.45), transparent);
+  pointer-events: none;
+}
+
+.connect-send-btn:hover {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow:
+    0 0 0 1.5px rgba(181, 121, 63, 0.8),
+    inset 0  1px 0 rgba(255, 255, 255, 0.75),
+    inset 0 -1px 0 rgba(140, 90, 45, 0.2),
+    0 14px 40px rgba(120, 72, 32, 0.35),
+    0  4px 12px rgba(120, 72, 32, 0.2);
+  background: linear-gradient(
+    135deg,
+    rgba(220, 150, 90, 0.65) 0%,
+    rgba(160, 100, 50, 0.45) 40%,
+    rgba(191, 131, 73, 0.50) 100%
+  );
+}
+
+.connect-send-btn:active {
+  transform: translateY(1px) scale(0.99);
+  box-shadow:
+    0 0 0 1.5px rgba(181, 121, 63, 0.5),
+    inset 0 2px 4px rgba(140, 90, 45, 0.2),
+    0 4px 16px rgba(120, 72, 32, 0.2);
 }
 
 /* =============================
-   Text Overlay
+  Text Overlay
 ============================= */
 
 .file-item {
@@ -433,6 +767,7 @@
   align-items: center;
   gap: 28px;
   pointer-events: auto;
+  margin-top: 30px;
 }
 
 /* inputs */

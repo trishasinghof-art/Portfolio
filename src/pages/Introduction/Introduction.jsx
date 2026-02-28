@@ -1,9 +1,9 @@
 import "./Introduction.css";
 import idCardImage from "../../assets/images/idcard.svg";
 import checkerStripImage from "../../assets/images/checker-strip.svg";
-import Skills from "../Skills/Skills";
-import WebAdventures from "../WebAdventures/WebAdventures";
-import DesignGallery from "../DesignGallery/DesignGallery";
+// import Skills from "../Skills/Skills";
+// import WebAdventures from "../WebAdventures/WebAdventures";
+// import DesignGallery from "../DesignGallery/DesignGallery";
 
 function Introduction() {
   return (
@@ -69,14 +69,7 @@ function Introduction() {
       </div>
     </section>
 
-    {/* SKILLS SECTION */}
-    <Skills />
-
-    {/* WEB ADVENTURES SECTION */}
-    <WebAdventures />
-
-    {/* DESIGN GALLERY SECTION */}
-    <DesignGallery />
+    {/* Only Introduction section remains */}
     </>
   );
 }

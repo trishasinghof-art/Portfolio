@@ -1,6 +1,7 @@
 import React, { useState, useRef } from "react";
 import "./About.css";
 
+
 import red from "../../assets/AboutMeFiles/red.svg";
 import purple from "../../assets/AboutMeFiles/purple.svg";
 import blue from "../../assets/AboutMeFiles/blue.svg";
@@ -23,6 +24,9 @@ import page6 from "../../assets/SoftSkills/page_6.png";
 import page7 from "../../assets/SoftSkills/page_7.png";
 import page8 from "../../assets/SoftSkills/page_8.png";
 
+import emailjs from "@emailjs/browser";
+
+
 const FILES = [
   { id: 0, label: "Education", img: red },
   { id: 1, label: "Soft Skills", img: lavender },
@@ -41,6 +45,29 @@ const SOFT_SPREADS = [
 ];
 
 function About() {
+  const formRef = useRef();
+
+  // EmailJS send handler
+  const sendEmail = (e) => {
+    e.preventDefault();
+    emailjs
+      .sendForm(
+        "service_toy8ehe",
+        "template_6t5t2ym",
+        formRef.current,
+        "0mw1I9T2IxVM2uQhl"
+      )
+      .then(
+        () => {
+          alert("Message sent successfully!");
+          formRef.current.reset();
+        },
+        (error) => {
+          console.error("FAILED...", error);
+          alert("Failed to send message.");
+        }
+      );
+  };
   const [activeIndex, setActiveIndex] = useState(null);
   const [offsets, setOffsets] = useState(() => new Array(FILES.length).fill(0));
   const [spreadIndex, setSpreadIndex] = useState(0);
@@ -270,20 +297,46 @@ function About() {
           <p className="connect-sub">
             Let’s create something together.
           </p>
-
-          <button className="start-project-btn">
-            <span className="start-project-text">Submit</span>
-          </button>
         </div>
 
         <div className="connect-form-stack">
-          <div className="connect-form-card" onClick={(e) => e.stopPropagation()}>
-            <input placeholder="First name" />
-            <input placeholder="Last name" />
-            <input placeholder="Email Address" />
-            <textarea placeholder="Send a message"></textarea>
-            {/* <button className="connect-send-btn">Send</button> */}
-          </div>
+          <form
+            ref={formRef}
+            onSubmit={sendEmail}
+            className="connect-form-card"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <input
+              type="text"
+              name="first_name"
+              placeholder="First name"
+              required
+            />
+            <input
+              type="text"
+              name="last_name"
+              placeholder="Last name"
+              required
+            />
+            <input
+              type="email"
+              name="email"
+              placeholder="Email Address"
+              required
+            />
+            <textarea
+              name="message"
+              placeholder="Send a message"
+              required
+            ></textarea>
+            <input
+              type="hidden"
+              name="time"
+              value={new Date().toLocaleString()}
+              required
+            />
+            <button type="submit" className="connect-send-btn">Send Message</button>
+          </form>
         </div>
       </div>
     )}
