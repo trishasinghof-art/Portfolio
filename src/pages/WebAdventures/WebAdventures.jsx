@@ -4,6 +4,8 @@ import Bg from "../../assets/images/webDevBg.svg";
 import WorkoutPlanner from "../../assets/images/workoutplanner.svg";
 import GameDescription from "../../assets/images/Gamedescription.svg";
 import flappy from "../../assets/images/flappybird.png";
+import flappy2 from "../../assets/images/flappybird2.png";
+import flappy3 from "../../assets/images/flappybird3.png";
 import github from "../../assets/icons/github.svg";
 import linkIcon from "../../assets/icons/link.svg";
 import image1 from "../../assets/images/image1.png";
@@ -11,22 +13,29 @@ import image2 from "../../assets/images/image2.png";
 import image3 from "../../assets/images/image3.png";
 
 function WebAdventures() {
-  const images = [image1, image2, image3];
-  const [stackRotation, setStackRotation] = useState(0);
+  const page1Images = [image1, image2, image3];
+  const page2Images = [flappy, flappy2, flappy3];
+  const [stackImages, setStackImages] = useState(page1Images);
+  const [page2StackImages, setPage2StackImages] = useState(page2Images);
+
+  const rotateLeft = (prev) => {
+    if (prev.length <= 1) {
+      return prev;
+    }
+
+    return [...prev.slice(1), prev[0]];
+  };
 
   const handleStackClick = () => {
-    setStackRotation((prev) => (prev + 1) % images.length);
+    setStackImages((prev) => rotateLeft(prev));
   };
 
-  const getRotatedImages = () => {
-    return [
-      images[(0 + stackRotation) % images.length], // front
-      images[(1 + stackRotation) % images.length], // back-left
-      images[(2 + stackRotation) % images.length], // back-right
-    ];
+  const handlePage2StackClick = () => {
+    setPage2StackImages((prev) => rotateLeft(prev));
   };
 
-  const [frontImage, backLeftImage, backRightImage] = getRotatedImages();
+  const [frontImage, backLeftImage, backRightImage] = stackImages;
+  const [page2FrontImage, page2BackLeftImage, page2BackRightImage] = page2StackImages;
 
   return (
     <section className="web-adventures-section">
@@ -83,7 +92,7 @@ function WebAdventures() {
           />
 
           <div className="sticky-links">
-            <a href="#" aria-label="GitHub">
+            <a href="https://github.com/trishasinghof-art/Flappy_Bird" aria-label="GitHub">
               <img src={github} alt="GitHub" />
             </a>
             <a href="#" aria-label="Live Link">
@@ -93,9 +102,15 @@ function WebAdventures() {
         </div>
 
         {/* Right: Image stack */}
-        <div className="image-stack">
-          <div className="image front image-front">
-            <img src={flappy} alt="Flappy Bird project preview" />
+        <div className="image-stack" onClick={handlePage2StackClick} role="button" tabIndex="0" aria-label="Click to cycle through Flappy Bird images">
+          <div className="image back left">
+            <img src={page2BackLeftImage} alt="Back left Flappy Bird preview" />
+          </div>
+          <div className="image front">
+            <img src={page2FrontImage} alt="Front Flappy Bird preview" />
+          </div>
+          <div className="image back right">
+            <img src={page2BackRightImage} alt="Back right Flappy Bird preview" />
           </div>
         </div>
       </div>

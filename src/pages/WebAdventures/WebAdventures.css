@@ -101,6 +101,21 @@
   box-shadow: 0 8px 20px rgba(0,0,0,0.12);
 }
 
+/* Subtle hover spread for back images (composed with base transforms) */
+
+.image-stack:hover .image.front {
+  transform: translateX(-50%) translateY(-20%);
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.image-stack:hover .image.back.left {
+  transform: rotate(-8deg) translate(-104px, 32px);
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.image-stack:hover .image.back.right {
+  transform: rotate(8deg) translate(104px, 42px);
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
 /* ================= DESCRIPTION ================= */
 
 .description-wrapper {
@@ -230,7 +245,3 @@
   }
 }
 
-/* Page 2: slight downward nudge for front image only (no size changes) */
-.adventure-page:nth-of-type(2) .image.front {
-  transform: translateX(-50%) translateY(12px);
-}

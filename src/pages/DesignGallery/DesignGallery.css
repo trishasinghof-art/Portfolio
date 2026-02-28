@@ -74,7 +74,8 @@
   will-change: transform;
 }
 
-.pillar:hover {
+.pillar:hover,
+.pillar:has(.pillar-tag:hover) {
   transform: translateY(-160px) scale(1.15);
   z-index: 5;
 }
@@ -114,12 +115,16 @@
 
   transition:
     transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
-    opacity 0.4s ease;
+    opacity 0.4s ease,
+    pointer-events 0s 0.4s;
 }
 
-.pillar:hover .pillar-tag {
+.pillar:hover .pillar-tag,
+.pillar:has(.pillar-tag:hover) .pillar-tag {
   transform: translate(-50%, -12px);
   opacity: 1;
+  pointer-events: auto;
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.4s ease;
 }
 
 /* tag image (NOT affected by pillar img rule) */
@@ -142,6 +147,38 @@
   line-height: 1.65;
   white-space: normal;
 }
+
+/* Link Wrapper */
+.link-wrapper {
+  display: inline-block;
+  margin-left: 6px;
+  vertical-align: middle;
+  text-decoration: none;
+  line-height: 0;
+}
+
+/* Link Icon - Inline after text */
+.link-icon {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  
+  cursor: pointer;
+  opacity: 0.75;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.link-wrapper:hover .link-icon {
+  opacity: 1;
+  transform: scale(1.15);
+}
+
+/* Link Icon Color Variants */
+.link-icon--orange { color: #ff7a18; }
+.link-icon--pink   { color: #ff4d8d; }
+.link-icon--blue   { color: #1e3a8a; }
+.link-icon--green  { color: #22c55e; }
+.link-icon--red    { color: #ef4444; }
 
 /* =============================
    Glow Colors (unchanged)

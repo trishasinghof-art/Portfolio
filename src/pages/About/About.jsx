@@ -174,47 +174,85 @@ function About() {
     {/* ===== SOFT SKILLS CONTENT ===== */}
     {index === 1 && activeIndex === 1 && (
       <div className="soft-content">
-        <div className="soft-page-wrap">
-          {/* Back Arrow - hidden on cover page */}
-          {spreadIndex > 0 && (
-            <button className="soft-arrow left" onClick={prevSpread}>
-              ←
-            </button>
-          )}
+        <div className="soft-page-wrap" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+          {/* Arrow slot left */}
+          <div className="soft-arrow-wrapper left">
+            {spreadIndex > 0 ? (
+              <button className="soft-arrow left" onClick={prevSpread}>
+                ←
+              </button>
+            ) : (
+              <button className="soft-arrow left" style={{ visibility: 'hidden' }} tabIndex={-1} aria-hidden="true" />
+            )}
+          </div>
 
-          {/* Cover Page (spreadIndex 0) */}
-          {spreadIndex === 0 && (
-            <div className="soft-cover-display">
-              <img
-                src={SOFT_PAGE_COVER}
-                className="soft-page"
-                alt="Soft skills cover"
-              />
-            </div>
-          )}
+          {/* Magazine content */}
+          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+            {spreadIndex === 0 && (
+              <div className="soft-cover-display">
+                <img
+                  src={SOFT_PAGE_COVER}
+                  className="soft-page"
+                  alt="Soft skills cover"
+                />
+              </div>
+            )}
+            {spreadIndex > 0 && (
+              <div className="soft-spread-display" style={spreadIndex === 2 ? {position: 'relative'} : {}}>
+                <img
+                  src={SOFT_SPREADS[spreadIndex - 1].left}
+                  className="soft-page soft-page-left"
+                  alt={`Soft skills page ${spreadIndex * 2}`}
+                />
+                <img
+                  src={SOFT_SPREADS[spreadIndex - 1].right}
+                  className="soft-page soft-page-right"
+                  alt={`Soft skills page ${spreadIndex * 2 + 1}`}
+                />
+                {/* Competitive Profiles Overlay: Only on Page 35 */}
+                {spreadIndex === 2 && (
+                  <div className="cp-links-overlay">
+                    <a
+                      href="https://leetcode.com/u/trishassingh03/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="cp-link"
+                    >
+                      &nbsp;&nbsp;&nbsp;LeetCode - trishassingh03
+                    </a>
+                    <a
+                      href="https://www.codechef.com/users/fever_hill_23"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="cp-link"
+                    >
+                      CodeChef - fever_hill_23
+                    </a>
+                    <a
+                      href="https://codeforces.com/profile/trishasinghof"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="cp-link"
+                    >
+                      &nbsp;&nbsp;&nbsp;Codeforces - trishasinghof
+                    </a>
+                    
+                  </div>
+                )}
+              </div>
+            )}
+          </div>
 
-          {/* Dual Page Spreads (spreadIndex 1-4) */}
-          {spreadIndex > 0 && (
-            <div className="soft-spread-display">
-              <img
-                src={SOFT_SPREADS[spreadIndex - 1].left}
-                className="soft-page soft-page-left"
-                alt={`Soft skills page ${spreadIndex * 2}`}
-              />
-              <img
-                src={SOFT_SPREADS[spreadIndex - 1].right}
-                className="soft-page soft-page-right"
-                alt={`Soft skills page ${spreadIndex * 2 + 1}`}
-              />
-            </div>
-          )}
-
-          {/* Forward Arrow - hidden on last spread */}
-          {spreadIndex < SOFT_SPREADS.length && (
-            <button className="soft-arrow right" onClick={nextSpread}>
-              →
-            </button>
-          )}
+          {/* Arrow slot right */}
+          <div className="soft-arrow-wrapper right">
+            {spreadIndex < SOFT_SPREADS.length ? (
+              <button className="soft-arrow right" onClick={nextSpread}>
+                →
+              </button>
+            ) : (
+              <button className="soft-arrow right" style={{ visibility: 'hidden' }} tabIndex={-1} aria-hidden="true" />
+            )}
+          </div>
         </div>
       </div>
     )}
