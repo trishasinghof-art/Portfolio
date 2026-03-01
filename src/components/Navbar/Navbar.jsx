@@ -41,6 +41,11 @@ function Navbar() {
                 About
               </NavLink>
             </li>
+              <li>
+                <NavLink to="/interact" className={({ isActive }) => isActive ? "navbar-link active" : "navbar-link"}>
+                  Spark & Share
+                </NavLink>
+              </li>
           </ul>
         </div>
       </div>
